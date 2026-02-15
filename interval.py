@@ -20,6 +20,8 @@ class interval:
             raise ValueError(f"Improper left bound value selected: {left_bound}.")
         if right_bound.__class__.__name__ not in {"float", "int"}: 
             raise ValueError(f"Improper right bound value selected: {right_bound}.")
+        if left_bound == right_bound:
+            raise Exception("Bounds are of the same value.")
         self.left_bound = left_bound
         self.right_bound = right_bound
         
