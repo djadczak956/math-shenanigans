@@ -28,7 +28,6 @@ class interval:
 
     def get_bounds(self) -> list:
         """Return a two element list of the bounds."""
-
         return [self.left_bound, self.right_bound]
     
 
@@ -39,25 +38,42 @@ class interval:
         left_bound -- numerical value of new left bound
         right_bound -- numerical value of new right bound
         """
-
+        
         self.left_bound = left_bound
         self.right_bound = right_bound
 
 
     def disp_bounds(self) -> str:
         """Return a string displaying the interval in mathematical notation."""
-        
-        # Choose proper bracket for each bound
+        # Choose correct bracket to use in mathematical notation.
         lb = ["(", "["][self.left_bound_type]  
         rb = [")", "]"][self.right_bound_type]
 
         return f"{lb}{self.left_bound}, {self.right_bound}{rb}"
     
+    def contains(self, value) -> bool:
+        """Check and return a boolean indicating if a value is contained within an interval.
+        
+        Keyword arguments:
+        value -- numerical value to determine if within the set.
+        """
+
+        # We need to check if the value is contained within the two bounds, begin careful of bound type.
+        # The checks are inclusive of bounds if they are closed, and exclusive otherwise. 
+        left_bound_check = value >= self.left_bound if self.left_bound_type == 1 else value > self.left_bound
+        right_bound_check = value <= self.right_bound if self.right_bound_type == 1 else value < self.right_bound
+        return left_bound_check and right_bound_check
+    
 
 x1 = interval(0, 0, 0, 1)
 print(x1.disp_bounds())
 
+for a in [-1, 0, 0.25, 1/3, 0.5, 2/3, 0.75, 0.999999, 1, 1.01]:
+    print(f"a = {a} is in x1: {x1.contains(a)}")
+    
+print()
 x2 = interval(1, 1, 0, 1)
 print(x2.disp_bounds())
 
-print(x2.get_bounds()[1])
+for a in [-1, 0, 0.25, 1/3, 0.5, 2/3, 0.75, 0.999999, 1, 1.01]:
+    print(f"a = {a} is in x2: {x2.contains(a)}")
