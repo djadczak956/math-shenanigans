@@ -10,13 +10,16 @@ class interval:
         """
 
         if left_bound_type not in {0, 1}:
-            raise Exception(f"Improper left bound type selected.")
+            raise ValueError("Improper left bound type selected.")
         if right_bound_type not in {0, 1}:
-            raise Exception("Improper right bound type selected.")
+            raise ValueError("Improper right bound type selected.")
         self.left_bound_type = left_bound_type
         self.right_bound_type = right_bound_type
         
-
+        if left_bound.__class__.__name__ not in {"float", "int"}: 
+            raise ValueError(f"Improper left bound value selected: {left_bound}.")
+        if right_bound.__class__.__name__ not in {"float", "int"}: 
+            raise ValueError(f"Improper right bound value selected: {right_bound}.")
         self.left_bound = left_bound
         self.right_bound = right_bound
 
@@ -46,5 +49,3 @@ print(x1.disp_bounds())
 
 x2 = interval(1, 1, 0, 1)
 print(x2.disp_bounds())
-
-x3 = interval(2, 1, 0, 1)
