@@ -9,8 +9,14 @@ class interval:
         right_bound -- numerical value of right bound
         """
 
+        if left_bound_type not in {0, 1}:
+            raise Exception(f"Improper left bound type selected.")
+        if right_bound_type not in {0, 1}:
+            raise Exception("Improper right bound type selected.")
         self.left_bound_type = left_bound_type
         self.right_bound_type = right_bound_type
+        
+
         self.left_bound = left_bound
         self.right_bound = right_bound
 
@@ -25,6 +31,7 @@ class interval:
         self.left_bound = left_bound
         self.right_bound = right_bound
 
+
     def disp_bounds(self) -> str:
         """Return a string displaying the interval in mathematical notation."""
         
@@ -34,5 +41,10 @@ class interval:
 
         return f"{lb}{self.left_bound}, {self.right_bound}{rb}"
     
-x = interval(0, 0, 0, 1)
-print(x.disp_bounds())
+x1 = interval(0, 0, 0, 1)
+print(x1.disp_bounds())
+
+x2 = interval(1, 1, 0, 1)
+print(x2.disp_bounds())
+
+x3 = interval(2, 1, 0, 1)
