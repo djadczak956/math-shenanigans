@@ -22,6 +22,13 @@ class interval:
             raise ValueError(f"Improper right bound value selected: {right_bound}.")
         self.left_bound = left_bound
         self.right_bound = right_bound
+        
+
+    def get_bounds(self) -> list:
+        """Return a two element list of the bounds."""
+
+        return [self.left_bound, self.right_bound]
+    
 
     def set_bounds(self, left_bound: float, right_bound: float) -> None:
         """Set the numerical bounds of an interval.
@@ -44,8 +51,11 @@ class interval:
 
         return f"{lb}{self.left_bound}, {self.right_bound}{rb}"
     
+
 x1 = interval(0, 0, 0, 1)
 print(x1.disp_bounds())
 
 x2 = interval(1, 1, 0, 1)
 print(x2.disp_bounds())
+
+print(x2.get_bounds()[1])
