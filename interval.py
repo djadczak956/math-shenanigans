@@ -42,6 +42,10 @@ class interval:
         self.left_bound = left_bound
         self.right_bound = right_bound
 
+    # TODO: Add method to get bound types.
+        
+    # TODO: Add method to get bound types.
+
 
     def disp_bounds(self) -> str:
         """Return a string displaying the interval in mathematical notation."""
@@ -63,6 +67,8 @@ class interval:
         left_bound_check = value >= self.left_bound if self.left_bound_type == 1 else value > self.left_bound
         right_bound_check = value <= self.right_bound if self.right_bound_type == 1 else value < self.right_bound
         return left_bound_check and right_bound_check
+    
+    # TODO: Add method to randomly choose element in interval.
     
 
 x1 = interval(0, 0, 0, 1)
