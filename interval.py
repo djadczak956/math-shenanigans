@@ -1,3 +1,5 @@
+from random import randrange
+
 class interval:
     def __init__(self, left_bound_type: int, right_bound_type: int, 
                  left_bound: float, right_bound: float):
@@ -42,9 +44,14 @@ class interval:
         self.left_bound = left_bound
         self.right_bound = right_bound
 
-    # TODO: Add method to get bound types.
+
+    def get_bound_types(self) -> list:
+        """Return bound types in a list."""
         
-    # TODO: Add method to get bound types.
+        return [self.left_bound_type, self.right_bound_type]
+        
+        
+    # TODO: Add method to set bound types.
 
 
     def disp_bounds(self) -> str:
@@ -69,17 +76,6 @@ class interval:
         return left_bound_check and right_bound_check
     
     # TODO: Add method to randomly choose element in interval.
-    
 
-x1 = interval(0, 0, 0, 1)
-print(x1.disp_bounds())
 
-for a in [-1, 0, 0.25, 1/3, 0.5, 2/3, 0.75, 0.999999, 1, 1.01]:
-    print(f"a = {a} is in x1: {x1.contains(a)}")
-    
-print()
-x2 = interval(1, 1, 0, 1)
-print(x2.disp_bounds())
 
-for a in [-1, 0, 0.25, 1/3, 0.5, 2/3, 0.75, 0.999999, 1, 1.01]:
-    print(f"a = {a} is in x2: {x2.contains(a)}")
