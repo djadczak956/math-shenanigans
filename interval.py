@@ -1,8 +1,8 @@
 from random import randrange
 
 class interval:
-    def __init__(self, left_bound_type: int, right_bound_type: int, 
-                 left_bound: float, right_bound: float):
+    def __init__(self, left_bound_type=1, right_bound_type=1, 
+                 left_bound=0, right_bound=1):
         """Initialize interval with bound types and their numerical bounds. 
 
         left_bound_type -- 0 for open bound, 1 for closed bound
@@ -10,23 +10,40 @@ class interval:
         left_bound -- numerical value of left bound
         right_bound -- numerical value of right bound
         """
-
-        if left_bound_type not in {0, 1}:
-            raise ValueError("Improper left bound type selected.")
-        if right_bound_type not in {0, 1}:
-            raise ValueError("Improper right bound type selected.")
+        
         self.left_bound_type = left_bound_type
         self.right_bound_type = right_bound_type
+        self.check_bounds_type()
         
-        if left_bound.__class__.__name__ not in {"float", "int"}: 
-            raise ValueError(f"Improper left bound value selected: {left_bound}.")
-        if right_bound.__class__.__name__ not in {"float", "int"}: 
-            raise ValueError(f"Improper right bound value selected: {right_bound}.")
-        if left_bound == right_bound:
-            raise Exception("Bounds are of the same value.")
         self.left_bound = left_bound
         self.right_bound = right_bound
-        
+        self.check_bounds()
+
+
+    def check_bounds_type(self) -> None:
+        """Raises an error if bound types are improper."""
+
+        if self.left_bound_type not in {0, 1}:
+            raise ValueError("Improper left bound type selected.")
+        if self.right_bound_type not in {0, 1}:
+            raise ValueError("Improper right bound type selected.")
+
+
+    def check_bounds(self) -> None:
+        """Raises an error if bounds are improper."""
+        not_closed = self.left_bound_type == 0 or self.right_bound_type == 0
+
+        # Swap if necessary
+        if self.left_bound > self.right_bound:
+            self.left_bound, self.right_bound = self.right_bound, self.left_bound
+
+        if self.left_bound.__class__.__name__ not in {"float", "int"}: 
+            raise ValueError(f"Improper left bound value selected: {self.left_bound}.")
+        if self.right_bound.__class__.__name__ not in {"float", "int"}: 
+            raise ValueError(f"Improper right bound value selected: {self.right_bound}.")
+        if self.left_bound == self.right_bound and not_closed:
+            raise Exception("Bounds are of the same value on an interval that is not closed.")
+
 
     def get_bounds(self) -> list:
         """Return a two element list of the bounds."""
@@ -43,6 +60,7 @@ class interval:
         
         self.left_bound = left_bound
         self.right_bound = right_bound
+        self.check_bounds()
 
 
     def get_bound_types(self) -> list:
@@ -50,9 +68,10 @@ class interval:
         
         return [self.left_bound_type, self.right_bound_type]
         
-        
-    # TODO: Add method to set bound types.
 
+    # TODO: Add method to set bound types.
+    def set_bound_types(self, left_bound_type, right_bound_type):
+        pass
 
     def disp_bounds(self) -> str:
         """Return a string displaying the interval in mathematical notation."""
