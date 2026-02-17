@@ -20,5 +20,13 @@ for i in range(1, 21):
     print(f"({i} digit(s)): {num} in {x1.disp_bounds()}: {x1.contains(num)}")
 
 # Test bounds checking
+print("Bounds check: ")
 x1.set_bounds(5, 0)
 print(x1.disp_bounds())
+
+# Test bounds setting
+print("Setting new bound types")
+x3 = interval()
+print("Old bound types: ", x3.disp_bounds())
+x3.set_bound_types(0, 0)
+print("New bound types: ", x3.disp_bounds())

@@ -69,9 +69,11 @@ class interval:
         return [self.left_bound_type, self.right_bound_type]
         
 
-    # TODO: Add method to set bound types.
-    def set_bound_types(self, left_bound_type, right_bound_type):
-        pass
+    def set_bound_types(self, left_bound_type, right_bound_type) -> None:
+        """Assign new bound types"""
+
+        self.left_bound_type = left_bound_type
+        self.right_bound_type = right_bound_type
 
     def disp_bounds(self) -> str:
         """Return a string displaying the interval in mathematical notation."""
