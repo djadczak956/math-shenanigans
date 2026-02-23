@@ -1,6 +1,8 @@
 import numpy as np
+from int_mod_ring import int_mod_ring
 
-z12 = list(range(0, 12))
+z12 = int_mod_ring(12)
+z12_vals = z12.to_list()
 base_tones = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
 #
 while True:
@@ -12,11 +14,9 @@ while True:
         print("Try again (pick one of the following: 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'). ")
 
 tones = base_tones
-tone_vals = dict(zip(z12, tones))
+tone_vals = dict(zip(z12_vals, tones))
 
-def add_table() -> None:
-    pass
-
-def mult_table() -> None:
+#TODO: Finish this
+def int_to_tones(tone_vals):
     pass
 
