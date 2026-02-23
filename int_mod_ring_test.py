@@ -4,7 +4,8 @@ import time
 z_test = int_mod_ring(12)
 print(z_test.to_list())
 print(z_test.addition_table())
-print(type(z_test.addition_table()))
+print()
+print(z_test.multiplication_table())
 
 # for i in range(2, 1000):
 #     print(f"Z mod {i}: ", end="") 
