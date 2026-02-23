@@ -1,3 +1,4 @@
+import numpy as np
 class int_mod_ring:
     def __init__(self, mod_val: int) -> None:
         self.mod_val = mod_val
@@ -16,3 +17,12 @@ class int_mod_ring:
     def to_list(self) -> list:
         """Return a list of the values in the ring. """
         return self.ring
+
+    def addition_table(self) -> list:
+        matrix = np.zeros((self.mod_val + 1, self.mod_val + 1))
+        for i in range(self.mod_val):
+            for j in range(self.mod_val):
+                add_val = (self.ring[i] + self.ring[j]) % self.mod_val
+                matrix[i, j] = add_val
+
+        return matrix.astype(int)

@@ -1,8 +1,10 @@
 from int_mod_ring import int_mod_ring
 import time
 
-z2 = int_mod_ring(2)
-print(z2.to_list())
+z_test = int_mod_ring(12)
+print(z_test.to_list())
+print(z_test.addition_table())
+print(type(z_test.addition_table()))
 
 # for i in range(2, 1000):
 #     print(f"Z mod {i}: ", end="") 
